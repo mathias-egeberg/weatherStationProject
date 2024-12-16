@@ -7,20 +7,57 @@ document.addEventListener("DOMContentLoaded", () => {
             if (!response.ok) throw new Error("Failed to fetch weather data");
 
             const data = await response.json();
+            const now = new Date();
+            const formattedTime = now.toLocaleTimeString("no-NO", {
+                hour: "2-digit",
+                minute: "2-digit",
+            });
 
-            // Update HTML elements with fetched data
+            // Update main weather data
             document.getElementById("temperature").textContent = `${data.temperature}°C`;
             document.getElementById("humidity").textContent = `${data.humidity}%`;
             document.getElementById("pressure").textContent = `${data.pressure} hPa`;
             document.getElementById("windSpeed").textContent = `${data.windSpeed} m/s`;
-            document.getElementById("windDirection").textContent = data.windDirection;
 
-            // Map wind direction to degrees for rotation
-            const directions = { N: 0, NNE: 22.5, NE: 45, ENE: 67.5, E: 90, ESE: 112.5, SE: 135, SSE: 157.5, S: 180, SSW: 202.5, SW: 225, WSW: 247.5, W: 270, WNW: 292.5, NW: 315, NNW: 337.5 };
+            const directionTranslations = {
+                N: "Nord",
+                NNE: "Nord-Nordøst",
+                NE: "Nordøst",
+                ENE: "Øst-Nordøst",
+                E: "Øst",
+                ESE: "Øst-Sørøst",
+                SE: "Sørøst",
+                SSE: "Sør-Sørøst",
+                S: "Sør",
+                SSW: "Sør-Sørvest",
+                SW: "Sørvest",
+                WSW: "Vest-Sørvest",
+                W: "Vest",
+                WNW: "Vest-Nordvest",
+                NW: "Nordvest",
+                NNW: "Nord-Nordvest",
+            };
+            const windDirectionNorwegian =
+                directionTranslations[data.windDirection] || data.windDirection;
+
+            document.getElementById("windDirection").textContent = windDirectionNorwegian;
+
+            // Update compass arrow rotation
+            const directions = {
+                N: 0,
+                NE: 45,
+                E: 90,
+                SE: 135,
+                S: 180,
+                SW: 225,
+                W: 270,
+                NW: 315,
+            };
             const rotation = directions[data.windDirection] || 0;
+            document.getElementById("compassArrow").style.transform = `translate(-50%, -50%) rotate(${rotation}deg)`;
 
-            // Rotate the arrow
-            document.getElementById("windArrow").style.transform = `translate(-50%, -50%) rotate(${rotation}deg)`;
+            // Update "Last updated" time
+            document.getElementById("last-updated").textContent = `Last updated: ${formattedTime}`;
         } catch (error) {
             console.error("Error updating weather data:", error);
         }

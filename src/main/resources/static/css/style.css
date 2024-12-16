@@ -28,11 +28,22 @@ h1 {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
+    justify-items: center;
+    align-items: center;
 }
 
 .grid > .wind-speed-box,
 .grid > .wind-direction-box {
-    grid-column: span 1; /* Side by side for the second row */
+    grid-column: span 1; /* Place these two boxes in the center row */
+    justify-self: center; /* Center the lower boxes */
+}
+
+.wind-speed-box {
+    grid-column: 2; /* Align wind speed box under the second box in the top row */
+}
+
+.wind-direction-box {
+    grid-column: 3; /* Align wind direction box under the third box in the top row */
 }
 
 /* Box Styling */
@@ -44,6 +55,7 @@ h1 {
     text-align: center;
     transition: transform 0.3s, box-shadow 0.3s;
     height: 220px;
+    width: 300px;
 }
 
 .box:hover {
@@ -68,11 +80,22 @@ h1 {
     margin: 0;
 }
 
-/* Compass for Wind Direction */
+/* Compass Box */
+.compass-box {
+    text-align: center;
+    height: 220px;
+    width: 300px;
+    background: #fff;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
 .compass {
     position: relative;
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     margin: 20px auto;
     border: 3px solid #0078d7;
     border-radius: 50%;
@@ -91,50 +114,50 @@ h1 {
 }
 
 .compass-label.north {
-    top: -15px;
+    top: -20px;
     left: 50%;
 }
 
 .compass-label.south {
-    bottom: -15px;
+    bottom: -20px;
     left: 50%;
 }
 
 .compass-label.east {
     top: 50%;
-    right: -15px;
+    right: -20px;
 }
 
 .compass-label.west {
     top: 50%;
-    left: -15px;
+    left: -20px;
 }
 
 .compass-label.ne {
-    top: -10px;
-    right: -10px;
+    top: 10px;
+    right: 10px;
 }
 
 .compass-label.se {
-    bottom: -10px;
-    right: -10px;
+    bottom: 10px;
+    right: 10px;
 }
 
 .compass-label.sw {
-    bottom: -10px;
-    left: -10px;
+    bottom: 10px;
+    left: 10px;
 }
 
 .compass-label.nw {
-    top: -10px;
-    left: -10px;
+    top: 10px;
+    left: 10px;
 }
 
-/* Arrow for Wind Direction */
+/* Arrow for Compass */
 .arrow {
     position: absolute;
     width: 3px;
-    height: 45px;
+    height: 60px;
     background: #0078d7;
     top: 50%;
     left: 50%;
@@ -151,5 +174,31 @@ h1 {
     height: 0;
     border-left: 6px solid transparent;
     border-right: 6px solid transparent;
-    border-top: 10px solid #0078d7;
+    border-top: 12px solid #0078d7;
 }
+
+
+
+/* Last Updated Text */
+.last-updated {
+    font-size: 14px;
+    color: #555;
+    margin-top: 20px;
+    text-align: center;
+}
+
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px;
+    font-size: 14px;
+    color: #555;
+    background-color: #f1f1f1;
+    border-top: 1px solid #ddd;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
