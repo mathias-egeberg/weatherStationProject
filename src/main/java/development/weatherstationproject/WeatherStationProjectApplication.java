@@ -2,10 +2,10 @@ package development.weatherstationproject;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@EnableJpaRepositories(basePackages = "development.weatherstationproject.Repository")
+@ComponentScan(basePackages = "development.weatherstationproject")
 public class WeatherStationProjectApplication {
 
     public static void main(String[] args) {

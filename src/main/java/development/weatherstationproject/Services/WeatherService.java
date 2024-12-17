@@ -1,7 +1,7 @@
 package development.weatherstationproject.Services;
 
 
-import development.weatherstationproject.Repository.WeatherDataRepository;
+import development.weatherstationproject.WeatherDataRepository;
 import development.weatherstationproject.entity.WeatherData;
 import org.springframework.stereotype.Service;
 
