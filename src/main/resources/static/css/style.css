@@ -26,24 +26,30 @@ h1 {
 /* Grid Layout */
 .grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr); /* Default: 3 columns */
     gap: 20px;
     justify-items: center;
     align-items: center;
 }
 
-.grid > .wind-speed-box,
-.grid > .wind-direction-box {
-    grid-column: span 1; /* Place these two boxes in the center row */
-    justify-self: center; /* Center the lower boxes */
-}
+/* Mobile Styles */
+@media screen and (max-width: 768px) {
+    .grid {
+        display: grid; /* Ensure grid layout */
+        grid-template-columns: 1fr; /* One column layout */
+        gap: 15px; /* Spacing between boxes */
+        width: 100%; /* Full width for grid */
+        margin: 0 auto; /* Center the grid */
+    }
 
-.wind-speed-box {
-    grid-column: 2; /* Align wind speed box under the second box in the top row */
-}
+    .box {
+        width: 100%; /* Each box spans full container width */
+        margin: 0; /* Reset margins */
+    }
 
-.wind-direction-box {
-    grid-column: 3; /* Align wind direction box under the third box in the top row */
+    .spacer {
+        height: 10px; /* Add extra space under the grid */
+    }
 }
 
 /* Box Styling */
@@ -55,7 +61,7 @@ h1 {
     text-align: center;
     transition: transform 0.3s, box-shadow 0.3s;
     height: 220px;
-    width: 300px;
+    width: 300px; /* Default width */
 }
 
 .box:hover {

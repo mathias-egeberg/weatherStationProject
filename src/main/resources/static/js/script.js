@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
             document.getElementById("compassArrow").style.transform = `translate(-50%, -50%) rotate(${rotation}deg)`;
 
             // Update "Last updated" time
-            document.getElementById("last-updated").textContent = `Last updated: ${formattedTime}`;
+            document.getElementById("last-updated").textContent = `Sist oppdatert: ${formattedTime}`;
         } catch (error) {
             console.error("Error updating weather data:", error);
         }
