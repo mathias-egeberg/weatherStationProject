@@ -4,29 +4,43 @@ body {
     background: linear-gradient(to right, #ece9e6, #ffffff);
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
     color: #333;
 }
 
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%; /* Ensure the page fills the entire viewport height */
+    margin: 0;
+    display: flex;
+    flex-direction: column; /* Enable vertical layout */
+}
+
 .container {
+    flex: 1; /* Make the container grow to fill the available space */
     text-align: center;
     width: 90%;
     max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow: hidden; /* Prevent content overflow */
 }
 
 h1 {
-    margin-bottom: 20px;
+    margin-bottom: 60px;
     font-size: 36px;
     color: #0078d7;
+    text-align: center;
+    word-wrap: break-word;
 }
 
 /* Grid Layout */
 .grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Default: 3 columns */
+    grid-template-columns: repeat(3, 1fr); /* Desktop: 3 columns */
     gap: 20px;
     justify-items: center;
     align-items: center;
@@ -34,19 +48,28 @@ h1 {
 
 /* Mobile Styles */
 @media screen and (max-width: 768px) {
+    body {
+        padding: 0; /* Remove extra padding that may hide content */
+        overflow-y: auto; /* Ensure vertical scrolling is enabled */
+    }
+
+    h1 {
+        font-size: 24px; /* Adjust header size for mobile */
+        margin-top: 10px; /* Ensure space above the header */
+    }
+
     .grid {
-        display: grid; /* Ensure grid layout */
-        grid-template-columns: 1fr; /* One column layout */
-        gap: 15px; /* Spacing between boxes */
-        width: 100%; /* Full width for grid */
-        margin: 0 auto; /* Center the grid */
+        grid-template-columns: 1fr; /* Mobile: Single column */
+        gap: 15px; /* Smaller spacing between boxes */
+        margin-top: 10px; /* Add space above the grid */
     }
 
     .box {
-        width: 100%; /* Each box spans full container width */
-        margin: 0; /* Reset margins */
+        width: 100%; /* Boxes take full width of container */
+        max-width: 300px; /* Prevent excessive stretching */
+        padding: 15px; /* Reduce padding for smaller screens */
+        margin: 10px auto; /* Add spacing between boxes */
     }
-
     .spacer {
         height: 10px; /* Add extra space under the grid */
     }
@@ -56,12 +79,13 @@ h1 {
 .box {
     background: #fff;
     border-radius: 10px;
-    padding: 30px;
+    padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
-    transition: transform 0.3s, box-shadow 0.3s;
-    height: 220px;
-    width: 300px; /* Default width */
+    height: auto;
+    width: 300px; /* Set a consistent width */
+    max-width: 90%; /* Allow smaller screens to adapt */
+    margin: 0 auto; /* Center boxes */
 }
 
 .box:hover {
@@ -86,102 +110,6 @@ h1 {
     margin: 0;
 }
 
-/* Compass Box */
-.compass-box {
-    text-align: center;
-    height: 220px;
-    width: 300px;
-    background: #fff;
-    border-radius: 10px;
-    padding: 30px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.compass {
-    position: relative;
-    width: 150px;
-    height: 150px;
-    margin: 20px auto;
-    border: 3px solid #0078d7;
-    border-radius: 50%;
-    background: #f9f9f9;
-    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
-}
-
-/* Labels for Cardinal Directions */
-.compass-label {
-    position: absolute;
-    font-size: 14px;
-    font-weight: bold;
-    color: #333;
-    text-align: center;
-    transform: translate(-50%, -50%);
-}
-
-.compass-label.north {
-    top: -20px;
-    left: 50%;
-}
-
-.compass-label.south {
-    bottom: -20px;
-    left: 50%;
-}
-
-.compass-label.east {
-    top: 50%;
-    right: -20px;
-}
-
-.compass-label.west {
-    top: 50%;
-    left: -20px;
-}
-
-.compass-label.ne {
-    top: 10px;
-    right: 10px;
-}
-
-.compass-label.se {
-    bottom: 10px;
-    right: 10px;
-}
-
-.compass-label.sw {
-    bottom: 10px;
-    left: 10px;
-}
-
-.compass-label.nw {
-    top: 10px;
-    left: 10px;
-}
-
-/* Arrow for Compass */
-.arrow {
-    position: absolute;
-    width: 3px;
-    height: 60px;
-    background: #0078d7;
-    top: 50%;
-    left: 50%;
-    transform-origin: bottom center;
-    transform: translate(-50%, -50%) rotate(0deg);
-}
-
-.arrow::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: -6px;
-    width: 0;
-    height: 0;
-    border-left: 6px solid transparent;
-    border-right: 6px solid transparent;
-    border-top: 12px solid #0078d7;
-}
 
 
 
@@ -197,14 +125,12 @@ h1 {
 /* Footer */
 footer {
     text-align: center;
-    margin-top: 20px;
-    padding: 10px;
+    padding: 10px 0;
     font-size: 14px;
     color: #555;
     background-color: #f1f1f1;
     border-top: 1px solid #ddd;
-    position: fixed;
-    bottom: 0;
     width: 100%;
+    margin-top: auto; /* Push the footer to the bottom */
 }
 
