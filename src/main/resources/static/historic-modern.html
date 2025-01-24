@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Værtsasjon historikk</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/chart-modern.css">
+  <script defer src="js/chart-modern.js"></script>
+  <link rel="shortcut icon" href="icons/cloudy.png" type="image/x-icon">
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>Historikk over målinger (BETA)</h1>
+    <p>Denne siden er fortsatt under utvikling</p>
+  </header>
+
+  <section class="controls">
+    <div class="form-group">
+      <label for="timeframe">Tidsramme:</label>
+      <select id="timeframe">
+        <option value="week">Siste 7 dager</option>
+        <option value="month">Forrige måned</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="dataType">Målinger:</label>
+      <select id="dataType">
+        <option value="temperature">Tempratur</option>
+        <option value="humidity">Luftfuktighet</option>
+        <option value="pressure">Lufttrykk</option>
+      </select>
+    </div>
+  </section>
+
+  <section id="chartContainer">
+    <canvas id="weatherChart"></canvas>
+  </section>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+</html>
+
