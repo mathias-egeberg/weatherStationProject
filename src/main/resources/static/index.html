@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live vær app</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="js/script.js"></script>
+    <link rel="shortcut icon" href="icons/cloudy.png" type="image/x-icon">
+</head>
+<body>
+<div class="container">
+    <h1>Tæruddalen skistadion værstasjon</h1>
+    <div class="grid">
+        <!-- Temperature -->
+        <div class="box temperature-box">
+            <img src="icons/temperature.png" alt="Temperature Icon">
+            <h2>Tempratur</h2>
+            <p id="temperature">-- °C</p>
+        </div>
+
+        <!-- Humidity -->
+        <div class="box humidity-box">
+            <img src="icons/humidity.png" alt="Humidity Icon">
+            <h2>Luftfuktighet</h2>
+            <p id="humidity">-- %</p>
+        </div>
+
+        <!-- Pressure -->
+        <div class="box pressure-box">
+            <img src="icons/pressure.png" alt="Pressure Icon">
+            <h2>Trykk</h2>
+            <p id="pressure">-- hPa</p>
+        </div>
+
+        <!-- Wind Speed -->
+        <div class="box wind-speed-box">
+            <img src="icons/wind-speed.png" alt="Wind Speed Icon">
+            <h2>Vind hastighet</h2>
+            <p id="windSpeed">-- m/s</p>
+        </div>
+
+        <!-- Wind Direction -->
+        <div class="box wind-direction-box">
+            <img src="icons/wind-direction.png" alt="Wind Direction Icon">
+            <h2>Vind retning</h2>
+            <p id="windDirection">--</p>
+        </div>
+
+        <!-- Compass -->
+        <div class="box compass-box">
+            <h2>Hstorisk værdata</h2>
+            <a href="historic-modern.html"><button  >Trykk her</button></a>
+            <div class="compass" id="compassArrow">
+
+            </div>
+        </div>
+    </div>
+    <div class="spacer"></div>
+    <p class="last-updated" id="last-updated">Sist oppdatert: --</p>
+</div>
+
+<footer>
+    <p>&copy; 2025 Mathias Egeberg. Alle rettigheter.</p>
+</footer>
+</body>
+</html>
