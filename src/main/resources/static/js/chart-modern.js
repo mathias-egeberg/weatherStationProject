@@ -14,6 +14,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     borderWidth: 3,
                     tension: 0.3,
                     fill: false,
+                    pointRadius: 0, // Completely removes the dots
+                    pointHoverRadius: 0, // Ensures no dots appear on hover
                 },
                 {
                     label: 'Luftfuktighet (%)',
@@ -22,6 +24,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     borderWidth: 3,
                     tension: 0.3,
                     fill: false,
+                    pointRadius: 0, // Completely removes the dots
+                    pointHoverRadius: 0, // Ensures no dots appear on hover
                 },
                 {
                     label: 'Lufttrykk (hPa)',
@@ -30,6 +34,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     borderWidth: 3,
                     tension: 0.3,
                     fill: false,
+                    pointRadius: 0, // Completely removes the dots
+                    pointHoverRadius: 0, // Ensures no dots appear on hover
                 }
             ]
         },
