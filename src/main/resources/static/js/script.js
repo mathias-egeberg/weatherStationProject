@@ -2,15 +2,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const apiUrl = "/api/weather/latest";
     const lastUpdatedElement = document.getElementById("last-updated");
 
-    // Helper function to format the current time
-    const formatTime = () => {
-        const now = new Date();
-        return now.toLocaleTimeString("no-NO", {
-            hour: "2-digit",
-            minute: "2-digit",
-        });
-    };
-
     const updateWeather = async () => {
         try {
             const response = await fetch(apiUrl);
@@ -19,12 +10,12 @@ document.addEventListener("DOMContentLoaded", () => {
             const data = await response.json();
 
             // Ensure the required fields are present
-            const { temperature, humidity, pressure } = data;
-            if (temperature == null || humidity == null || pressure == null) {
-                throw new Error("Missing required weather data (temperature, humidity, pressure).");
+            const { temperature, humidity, pressure, timestamp } = data;
+            if (temperature == null || humidity == null || pressure == null || !timestamp) {
+                throw new Error("Missing required weather data (temperature, humidity, pressure, timestamp).");
             }
 
-            // Update required weather data in the DOM
+            // Update weather data in the DOM
             document.getElementById("temperature").textContent = `${temperature}°C`;
             document.getElementById("humidity").textContent = `${humidity}%`;
             document.getElementById("pressure").textContent = `${pressure} hPa`;
@@ -76,10 +67,18 @@ document.addEventListener("DOMContentLoaded", () => {
                 compassArrow.style.transform = `translate(-50%, -50%) rotate(${rotation}deg)`;
             }
 
-            // Update "Last Updated" time
-            const formattedTime = formatTime();
+            // Convert timestamp from API into readable format
+            const formattedTimestamp = new Date(timestamp).toLocaleString("no-NO", {
+                year: "numeric",
+                month: "2-digit",
+                day: "2-digit",
+                hour: "2-digit",
+                minute: "2-digit"
+            });
+
+            // Update "Last Updated" time with actual database timestamp
             if (lastUpdatedElement) {
-                lastUpdatedElement.textContent = `Sist oppdatert: ${formattedTime}`;
+                lastUpdatedElement.textContent = `Sist oppdatert: ${formattedTimestamp}`;
             }
         } catch (error) {
             console.error("Error updating weather data:", error);
@@ -95,3 +94,4 @@ document.addEventListener("DOMContentLoaded", () => {
     updateWeather();
     setInterval(updateWeather, 60000); // Fetch and update every minute
 });
+

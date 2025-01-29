@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/weather")
@@ -24,8 +26,22 @@ public class WeatherController {
     }
 
     @GetMapping("/latest")
-    public WeatherData getLatestWeather() {
-        return service.getLatestWeather();
+    public ResponseEntity<Map<String, Object>> getLatestWeather() {
+        WeatherData latestWeather = service.getLatestWeather();
+
+        if (latestWeather == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        Map<String, Object> response = new HashMap<>();
+        response.put("temperature", latestWeather.getTemperature());
+        response.put("humidity", latestWeather.getHumidity());
+        response.put("pressure", latestWeather.getPressure());
+        response.put("windSpeed", latestWeather.getWindSpeed());
+        response.put("windDirection", latestWeather.getWindDirection());
+        response.put("timestamp", latestWeather.getTimestamp()); // Include timestamp
+
+        return ResponseEntity.ok(response);
     }
 
     @GetMapping("/historical")
