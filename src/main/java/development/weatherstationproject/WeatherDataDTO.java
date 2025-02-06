@@ -1,7 +1,12 @@
 package development.weatherstationproject;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.time.LocalDateTime;
 
+@Getter
+@Setter
 public class WeatherDataDTO {
     private LocalDateTime timestamp;
     private Float value;
@@ -11,16 +16,8 @@ public class WeatherDataDTO {
         this.value = value;
     }
 
-    public LocalDateTime getTimestamp() {
-        return timestamp;
-    }
-
     public void setTimestamp(LocalDateTime timestamp) {
         this.timestamp = timestamp;
-    }
-
-    public Float getValue() {
-        return value;
     }
 
     public void setValue(Float value) {

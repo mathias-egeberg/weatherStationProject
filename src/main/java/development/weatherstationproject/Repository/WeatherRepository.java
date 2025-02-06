@@ -30,4 +30,14 @@ public interface WeatherRepository extends JpaRepository<WeatherData, Long> {
     List<WeatherDataDTO> findPressureDataBetweenDates(
             @Param("startDate") LocalDateTime startDate,
             @Param("endDate") LocalDateTime endDate);
+
+
+    // Get latest weather data
+    WeatherData findTopByOrderByTimestampDesc();
+
+    // Queries for historical data
+    List<WeatherData> findByTimestampBetween(LocalDateTime start, LocalDateTime end);
+
+
+
 }

@@ -1,14 +1,12 @@
 package development.weatherstationproject.Controller;
 
 
+import development.weatherstationproject.Repository.WeatherRepository;
 import development.weatherstationproject.Services.WeatherService;
 import development.weatherstationproject.WeatherDataDTO;
 import development.weatherstationproject.entity.WeatherData;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
@@ -24,6 +22,7 @@ public class WeatherController {
     public WeatherController(WeatherService service) {
         this.service = service;
     }
+
 
     @GetMapping("/latest")
     public ResponseEntity<Map<String, Object>> getLatestWeather() {
@@ -61,6 +60,17 @@ public class WeatherController {
 
         List<WeatherDataDTO> data = service.getHistoricalData(startDate, endDate, type);
         return ResponseEntity.ok(data);
+    }
+
+
+    @PostMapping("/add")
+    public ResponseEntity<String> addWeather(@RequestBody WeatherData data) {
+        if (data.getTimestamp() == null) {
+            data.setTimestamp(LocalDateTime.now());
+        }
+
+        service.addWeatherData(data);
+        return ResponseEntity.ok("Weather data stored successfully.");
     }
 
 }

@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "sensor_readings")
+@Table(name = "stadion_readings")
 public class WeatherData {
 
 
