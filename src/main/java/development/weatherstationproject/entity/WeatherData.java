@@ -2,8 +2,6 @@ package development.weatherstationproject.entity;
 
 
 import jakarta.persistence.*;
-
-import java.time.Instant;
 import java.time.LocalDateTime;
 
 @Entity
@@ -16,7 +14,7 @@ public class WeatherData {
     private Long id;
 
     @Column(nullable = false, updatable = false)
-    private Instant timestamp;
+    private LocalDateTime timestamp;
 
 
     private Float temperature;
@@ -29,8 +27,8 @@ public class WeatherData {
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
-    public Instant getTimestamp() { return timestamp; }
-    public void setTimestamp(Instant timestamp) { this.timestamp = timestamp; }
+    public LocalDateTime getTimestamp() { return timestamp; }
+    public void setTimestamp(LocalDateTime timestamp) { this.timestamp = timestamp; }
 
     public Float getTemperature() { return temperature; }
     public void setTemperature(Float temperature) { this.temperature = temperature; }

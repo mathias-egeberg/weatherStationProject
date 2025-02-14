@@ -8,9 +8,7 @@ import development.weatherstationproject.entity.WeatherData;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.Instant;
 import java.time.LocalDateTime;
-import java.time.ZoneOffset;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -67,12 +65,9 @@ public class WeatherController {
 
     @PostMapping("/add")
     public ResponseEntity<String> addWeather(@RequestBody WeatherData data) {
-
         if (data.getTimestamp() == null) {
-            data.setTimestamp(Instant.now()); // ✅ Always stores timestamps in UTC
+            data.setTimestamp(LocalDateTime.now());
         }
-
-
 
         service.addWeatherData(data);
         return ResponseEntity.ok("Weather data stored successfully.");
