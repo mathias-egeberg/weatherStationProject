@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
             labels: [], // Time labels will be populated dynamically
             datasets: [
                 {
-                    label: 'Tempratur (°C)',
+                    label: 'Temperatur (°C)',
                     data: [],
                     borderColor: '#ff4500',
                     borderWidth: 3,
