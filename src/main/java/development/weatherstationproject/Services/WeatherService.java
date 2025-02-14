@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -45,7 +46,7 @@ public class WeatherService {
         weatherData.setPressure(data.getPressure());
         weatherData.setWindSpeed(data.getWindSpeed());
         weatherData.setWindDirection(data.getWindDirection());
-        weatherData.setTimestamp(data.getTimestamp() != null ? data.getTimestamp() : LocalDateTime.now());
+        weatherData.setTimestamp(data.getTimestamp() != null ? data.getTimestamp() : Instant.now());
 
         weatherRepository.save(weatherData);
     }
